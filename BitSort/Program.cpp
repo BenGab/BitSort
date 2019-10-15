@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 	{
 		int number = (int)(num);
 		int idx = number / 8;
-		int pos = number - idx;
+		int pos = number % 8;
 
 		if (getbits(buff[idx], pos, 1) > 0)
 		{
