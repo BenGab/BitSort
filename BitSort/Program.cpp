@@ -10,7 +10,7 @@ unsigned int getbits(unsigned int x, int p, int n) {
 
 unsigned int setbit(unsigned int x, int p)
 {
-	return x | (1 >> p);
+	return x | (1 << p);
 }
 
 int main(int argc, char* argv[])
@@ -47,6 +47,20 @@ int main(int argc, char* argv[])
 			continue;
 		}
 		buff[idx] = setbit(buff[idx], pos);
+	}
+
+	for (int i = 0; i < BUFFSIZE; i++)
+	{
+		for (int j = 0; j < BUFFSIZE; j++)
+		{
+			int bit = getbits(buff[i], j, 1);
+
+			if (bit == 0)
+			{
+				continue;
+			}
+			cout << (i * 8) + j << endl;
+		}
 	}
 
 	ifs.close();
