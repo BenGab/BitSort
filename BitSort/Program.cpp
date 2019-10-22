@@ -2,7 +2,7 @@
 #include<fstream>
 using namespace std;
 
-const int BUFFSIZE = 8152;
+const int BUFFSIZE = 8192;
 
 unsigned int getbits(unsigned int x, int p, int n) {
 	return (x >> (p + 1 - n)) & ~(~0 << n);
@@ -15,7 +15,7 @@ unsigned int setbit(unsigned int x, int p)
 
 int main(int argc, char* argv[])
 {
-	unsigned int buff[BUFFSIZE];
+	static unsigned int buff[BUFFSIZE];
 
 	char* filename = nullptr;
 	unsigned short num;
@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 
 	for (int i = 0; i < BUFFSIZE; i++)
 	{
-		for (int j = 0; j < BUFFSIZE; j++)
+		for (int j = 0; j < 8; j++)
 		{
 			int bit = getbits(buff[i], j, 1);
 
